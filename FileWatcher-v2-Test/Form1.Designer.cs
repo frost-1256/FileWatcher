@@ -44,6 +44,7 @@
             this.監視を終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.停止ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,15 +105,15 @@
             this.label2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(9, 237);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 17);
+            this.label2.Size = new System.Drawing.Size(290, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "FileWatcher version 1.0 developed by frost-1256";
+            this.label2.Text = "FileWatcher ver 1.0 developed by frost-1256";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.linkLabel1.Location = new System.Drawing.Point(330, 237);
+            this.linkLabel1.Location = new System.Drawing.Point(305, 237);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(98, 17);
             this.linkLabel1.TabIndex = 5;
@@ -180,11 +181,22 @@
             this.停止ToolStripMenuItem.Text = "停止";
             this.停止ToolStripMenuItem.Click += new System.EventHandler(this.停止ToolStripMenuItem_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(409, 226);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(155, 28);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "ドキュメントに謎のフォルダが";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 263);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.linkLabel1);
@@ -220,6 +232,7 @@
         private System.Windows.Forms.ToolStripMenuItem 監視を終了ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 停止ToolStripMenuItem;
+        private System.Windows.Forms.Button button4;
     }
 }
 

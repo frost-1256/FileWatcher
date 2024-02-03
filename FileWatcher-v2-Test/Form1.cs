@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 
 namespace FileWatcher_v2_Test
@@ -21,6 +22,7 @@ namespace FileWatcher_v2_Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
             this.MaximizeBox = false;
             string DocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string mkdirpath = DocumentsPath + @"\FileWatcherExceptionSkiper";
@@ -152,7 +154,7 @@ namespace FileWatcher_v2_Test
                     s += $"【{e.ChangeType.ToString()}】{e.FullPath}";
                     break;
             }
-            MessageBox.Show(s);
+            MessageBox.Show(s + "が発生しましたデバイス所有者に説明してください!!!!!!!!!!", "!!!警告!!!", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
         }
 
         /// <summary>
@@ -228,6 +230,7 @@ namespace FileWatcher_v2_Test
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            
         }
 
         private void 停止ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -258,6 +261,11 @@ namespace FileWatcher_v2_Test
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Visible = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("これの動作に必要なものです。絶対に中に何か入れないでください");
         }
     }
 }
