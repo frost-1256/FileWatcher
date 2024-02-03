@@ -21,6 +21,19 @@ namespace FileWatcher_v2_Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+            string DocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string mkdirpath = DocumentsPath + @"\FileWatcherExceptionSkiper";
+            if (Directory.Exists(mkdirpath))
+            {
+                Console.WriteLine("Aready Created");
+            }
+            else
+            {
+                Directory.CreateDirectory(mkdirpath);
+            }
+
+
             // 監視を停止する
             fileSystemWatcher1.IncludeSubdirectories = false;
 
@@ -33,7 +46,18 @@ namespace FileWatcher_v2_Test
             fileSystemWatcher1.Renamed += new RenamedEventHandler(fileRenamed);
 
             // 監視対象ディレクトリを指定する
-            fileSystemWatcher1.Path = @"C:\testdir";
+            fileSystemWatcher1.Path = mkdirpath;
+            {
+                try
+                {
+                    
+
+                }
+                catch 
+                {
+                    
+                }
+            }
 
             // 監視対象の拡張子を指定する（全てを指定する場合は空にする）
             fileSystemWatcher1.Filter = "*";
@@ -184,6 +208,56 @@ namespace FileWatcher_v2_Test
             linkLabel1.LinkVisited = true;
             //ブラウザで開く
             System.Diagnostics.Process.Start("https://github.com/frost-1256/FileWatcher");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // メッセージボックスを表示
+            DialogResult result = MessageBox.Show("監視が終了しますがよろしいですか?", "警告", MessageBoxButtons.YesNo);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (result == System.Windows.Forms.DialogResult.No)
+            {
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        private void 停止ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 監視を終了ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // メッセージボックスを表示
+            DialogResult result = MessageBox.Show("監視が終了しますがよろしいですか?", "警告", MessageBoxButtons.YesNo);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                fileSystemWatcher1.IncludeSubdirectories = false;
+            }
+            else if (result == System.Windows.Forms.DialogResult.No)
+            {
+
+            }
+        }
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = true;
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Visible = true;
         }
     }
 }
