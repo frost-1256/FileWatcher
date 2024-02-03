@@ -123,6 +123,8 @@ namespace FileWatcher_v2_Test
 
                     // 監視を実行する
                     fileSystemWatcher1.EnableRaisingEvents = true;
+
+                    MessageBox.Show(fileSystemWatcher1.Path + "の監視を開始します");
                 }
             }
         }
