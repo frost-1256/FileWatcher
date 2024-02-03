@@ -148,5 +148,42 @@ namespace FileWatcher_v2_Test
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (OpenFileDialog fileDialog = new OpenFileDialog())
+            {
+                fileDialog.Title = "監視するファイルを選択してください";
+                fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                fileDialog.Filter = "すべてのファイル|*.*";
+
+                DialogResult result = fileDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    // 選択されたファイルのパス
+                    string selectedFilePath = fileDialog.FileName;
+
+                    // "C:\" にファイル名を付けてコピー
+                    string destinationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Path.GetFileName(selectedFilePath));
+                    File.Copy(selectedFilePath, destinationPath);
+
+                    // パスが選択された場合、そのパスを監視対象として設定する
+                    fileSystemWatcher1.Path = Path.GetDirectoryName(selectedFilePath);
+
+                    // 監視を実行する
+                    fileSystemWatcher1.EnableRaisingEvents = true;
+                }
+            }
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //リンク先に移動したことにする
+            linkLabel1.LinkVisited = true;
+            //ブラウザで開く
+            System.Diagnostics.Process.Start("https://github.com/frost-1256/FileWatcher");
+        }
     }
 }
