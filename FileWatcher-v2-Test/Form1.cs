@@ -131,9 +131,7 @@ namespace FileWatcher_v2_Test
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
-
-            // 監視を停止する
-            fileSystemWatcher1.IncludeSubdirectories = false;
+            fileSystemWatcher1.EnableRaisingEvents = false;
         }
         private static void fileChanged(object sender, FileSystemEventArgs e)
         {
@@ -247,7 +245,7 @@ namespace FileWatcher_v2_Test
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                fileSystemWatcher1.IncludeSubdirectories = false;
+                fileSystemWatcher1.EnableRaisingEvents = false;
             }
             else if (result == System.Windows.Forms.DialogResult.No)
             {
