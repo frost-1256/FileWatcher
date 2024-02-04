@@ -37,7 +37,7 @@ namespace FileWatcher_v2_Test
 
 
             // 監視を停止する
-            fileSystemWatcher1.IncludeSubdirectories = false;
+            fileSystemWatcher1.EnableRaisingEvents = false;
 
             // ファイル変更、作成、削除のイベントをファイル変更メソッドにあげる
             fileSystemWatcher1.Changed += new FileSystemEventHandler(fileChanged);
@@ -120,6 +120,7 @@ namespace FileWatcher_v2_Test
 
                     // パスが選択された場合、そのパスを監視対象として設定する
                     fileSystemWatcher1.Path = selectedFolderPath;
+                    textBox1.Text = selectedFolderPath;
 
                     // 監視を実行する
                     fileSystemWatcher1.EnableRaisingEvents = true;
@@ -132,6 +133,7 @@ namespace FileWatcher_v2_Test
         private void btnEnd_Click(object sender, EventArgs e)
         {
             fileSystemWatcher1.EnableRaisingEvents = false;
+            textBox1.Text = "";
         }
         private static void fileChanged(object sender, FileSystemEventArgs e)
         {
@@ -196,6 +198,7 @@ namespace FileWatcher_v2_Test
 
                     // パスが選択された場合、そのパスを監視対象として設定する
                     fileSystemWatcher1.Path = Path.GetDirectoryName(selectedFilePath);
+                    textBox1.Text = Path.GetFileName(selectedFilePath);
 
                     // 監視を実行する
                     fileSystemWatcher1.EnableRaisingEvents = true;
